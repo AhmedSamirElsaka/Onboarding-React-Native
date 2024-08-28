@@ -1,15 +1,25 @@
 import { Text, View } from "react-native";
-
+import { createStackNavigator } from "@react-navigation/stack";
+import Home from "@/screens/Home";
+import OnboardingScreen from "@/screens/OnboardingScreen";
+import { NavigationContainer } from "@react-navigation/native";
 export default function Index() {
+  const Stack = createStackNavigator();
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <NavigationContainer independent={true}>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Onboarding"
+          component={OnboardingScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
