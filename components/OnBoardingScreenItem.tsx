@@ -78,9 +78,9 @@ const OnBoardingScreenItem = ({ index, x, item }: Props) => {
           loop
         />
       </Animated.View>
-      <Text style={[styles.itemText, { color: item.textColor }]}>
+      <Animated.Text style={[styles.itemText, { color: item.textColor }]}>
         {item.text}
-      </Text>
+      </Animated.Text>
       <Text>Hello</Text>
     </View>
   );

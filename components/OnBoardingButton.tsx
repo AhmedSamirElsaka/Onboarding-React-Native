@@ -45,9 +45,22 @@ const OnBoardingButton = ({
     };
   });
 
+  const containerAnimationStyle = useAnimatedStyle(() => {
+    return {
+      width:
+        flatListIndex.value === dataLength - 1
+          ? withTiming(120)
+          : withTiming(60),
+
+      height:
+        flatListIndex.value === dataLength - 1
+          ? withTiming(40)
+          : withTiming(30),
+    };
+  });
   const nextAnimationStyle = useAnimatedStyle(() => {
     return {
-      width: 120,
+      width: 60,
       height: 30,
       opacity:
         flatListIndex.value === dataLength - 1 ? withTiming(0) : withTiming(1),
@@ -89,7 +102,13 @@ const OnBoardingButton = ({
         }
       }}
     >
-      <Animated.View style={[styles.container, animatedBackgroundColor]}>
+      <Animated.View
+        style={[
+          styles.container,
+          animatedBackgroundColor,
+          containerAnimationStyle,
+        ]}
+      >
         <Animated.Text
           style={[styles.textButton, getStartedTextAnimationStyle]}
         >
@@ -108,6 +127,8 @@ export default OnBoardingButton;
 
 const styles = StyleSheet.create({
   container: {
+    width: 120,
+    height: 30,
     padding: 6,
     borderRadius: 100,
     justifyContent: "center",
@@ -123,6 +144,8 @@ const styles = StyleSheet.create({
   textButton: {
     color: "white",
     fontSize: 16,
+    fontWeight: "bold",
+    flex: 1,
     position: "absolute",
     textAlign: "right",
   },
